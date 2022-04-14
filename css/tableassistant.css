@@ -26,3 +26,6 @@ table td.expand {
     width: 99%
 }
 table { box-shadow: 2px 3px 10px rgb(215, 215, 215); }
+.diagonalCross2 {
+    background: linear-gradient(to top right, #fff calc(50% - 1px), black , #fff calc(50% + 1px) )
+  }

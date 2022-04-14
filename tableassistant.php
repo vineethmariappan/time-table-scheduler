@@ -41,9 +41,8 @@ include "navbar.php"
                         </colgroup>
                         <tbody>
                             <tr>
-                                <td rowspan="2" colspan="1">
-                                    <div>
-                                    </div>
+                                <td class="diagonalCross2" rowspan="2" colspan="1" >
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  HOUR <br> <br> DAY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 </td>
                                 <td>
                                     1
@@ -116,7 +115,7 @@ include "navbar.php"
                                     Moday
                                 </td>
                                 <td>
-                                  <?php include "tablecelloption.php" ?>
+                                    <?php include "tablecelloption.php" ?>
                                 </td>
                                 <td>
                                     <?php include "tablecelloption.php" ?>
@@ -274,8 +273,14 @@ include "navbar.php"
                         </tbody>
                     </table>
                 </div>
+                <div class="col-12" style="text-align: center;">
+                    <br>
+                    <button class="btn btn-secondary">Generate PDF</button>
+
+                </div>
             </div>
         </div>
+
     </div>
 </body>
 
