@@ -275,6 +275,7 @@ include "navbar.php"
                 </div>
                 <div class="col-12" style="text-align: center;">
                     <br>
+                    <button class="btn btn-secondary">Finalize</button>
                     <button class="btn btn-secondary">Generate PDF</button>
 
                 </div>
