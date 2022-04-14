@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+    <link rel="stylesheet" href="css/login.css" />
+</head>
+<?php 
+include "navbar.php"
+?>
+<body>
+    <div class="mask d-flex align-items-center h-200">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 d-flex">
+                <table class="table table-bordered" cellspacing="0" cellpadding="0" dir="ltr" border="1">
+                    <colgroup>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                        <col width="100"/>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" colspan="1">
+                                <div>
+                                </div>
+                            </td>
+                            <td>
+                                1
+                            </td>
+                            <td>
+                                2
+                            </td>
+                            <td rowspan="2" colspan="1">
+                                <div>
+                                    10:50 - 11:10
+                                </div>
+                            </td>
+                            <td>
+                                3
+                            </td>
+                            <td>
+                                4
+                            </td>
+                            <td rowspan="2" colspan="1">
+                                <div>
+                                    12:50 - 1:40
+                                </div>
+                            </td>
+                            <td>
+                                5
+                            </td>
+                            <td>
+                                6
+                            </td>
+                            <td rowspan="2" colspan="1">
+                                <div>
+                                    3:20 - 3:30
+                                </div>
+                            </td>
+                            <td>
+                                7
+                            </td>
+                            <td>
+                                8
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                9:10 - 10:00
+                            </td>
+                            <td>
+                                10:00 - 10:50
+                            </td>
+                            <td>
+                                11:10 - 12:00
+                            </td>
+                            <td>
+                                12:00 - 12:50
+                            </td>
+                            <td>
+                                1:40 - 2:30
+                            </td>
+                            <td>
+                                2:30 - 3:20
+                            </td>
+                            <td>
+                                3:30 - 4:10
+                            </td>
+                            <td>
+                                4:10 - 5:00
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Moday
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td rowspan="5" colspan="1">
+                                <div>
+                                    BREAK
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td rowspan="5" colspan="1">
+                                <div>
+                                    LUNCH
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td rowspan="5" colspan="1">
+                                <div>
+                                    BREAK
+                                </div>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Tuesday
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Wednesday
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Thursday
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Friday
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

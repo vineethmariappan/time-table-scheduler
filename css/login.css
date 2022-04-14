@@ -1,0 +1,10 @@
+*{
+    font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
+body{
+    background-color: rgb(247, 247, 247);
+}
+.btn{
+    text-transform:none;
+    font-size: medium;
+}
