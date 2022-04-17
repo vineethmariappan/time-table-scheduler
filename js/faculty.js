@@ -18,7 +18,6 @@ function fetchFacultyName(faculty_code){
     var inputValue = faculty_code;
     $.post('fetchfacultyname.php', { faculty_code: inputValue }, function(data){
         data =  JSON.parse(data);
-        console.log(data[0]);
         $("#faculty_name").val(data[0]);
     });
 }

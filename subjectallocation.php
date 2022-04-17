@@ -23,6 +23,65 @@ if(isset($_SESSION['loggedin'])==false){
     header("location: login.php");
     exit;
 }
+$academic_year_err = $department_main_err = $semester_err = $department_faculty_err = $faculty_code_err = "";
+$academic_year = $department_main = $semester = $department_faculty = $faculty_code = "";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+ 
+    if(empty(trim($_POST["academic_year"]))){
+        $academic_year_err = "Please enter academic year.";
+    } else{
+        $academic_year = trim($_POST["academic_year"]);
+    }
+    
+    if(empty(trim($_POST["department_main"]))){
+        $department_main_err = "Please enter department.";
+    } else{
+        $department_main = trim($_POST["department_main"]);
+    }
+
+    if(empty(trim($_POST["semester"]))){
+        $semester_err = "Please enter semester.";
+    } else{
+        $semester = trim($_POST["semester"]);
+    }
+    if(empty(trim($_POST["subject_code"]))){
+        $subject_code_err = "Please enter subject code.";
+    } else{
+        $subject_code = trim($_POST["subject_code"]);
+    }
+
+    if(empty(trim($_POST["department_faculty"]))){
+        $department_faculty_err = "Please enter department of faculty";
+    } else{
+        $department_faculty = trim($_POST["department_faculty"]);
+    }
+
+    if(empty(trim($_POST["faculty_code"]))){
+        $faculty_code_err = "Please enter faculty code";
+    } else{
+        $faculty_code = trim($_POST["faculty_code"]);
+    }
+    
+    // Validate credentials
+    if(empty($academic_year_err) && empty($department_main_err) && empty($semester_err) && empty($department_faculty_err) && empty($faculty_code_err)){
+        $result = mysqli_query($con,"select subject_id from subject where subject_code='".$subject_code."' LIMIT 1");
+        $row = mysqli_fetch_assoc($result);
+        $subject_id = $row['subject_id'];
+        $result = mysqli_query($con,"select faculty_id from faculty where faculty_code='".$faculty_code."' LIMIT 1");
+        $row = mysqli_fetch_assoc($result);
+        $faculty_id = $row['faculty_id'];
+        $result = mysqli_query($con,"select department_id from department where department_name='".$department_faculty."' LIMIT 1");
+        $row = mysqli_fetch_assoc($result);
+        $department_faculty_id = $row['department_id'];
+        $sql = "INSERT INTO subject_allocation(subject_id,faculty_id,semester,department_id,academic_year) values(?,?,?,?,?)";
+        $stmt = mysqli_prepare($con, $sql);
+        mysqli_stmt_bind_param($stmt, "sssss", $subject_id,$faculty_id,$semester,$department_faculty_id,$academic_year);
+        mysqli_stmt_execute($stmt);
+    }
+    
+    // Close connection
+    mysqli_close($con);
+}
 ?>
 
 <body>
@@ -40,7 +99,7 @@ if(isset($_SESSION['loggedin'])==false){
                                 <div class="card-body p-5">
                                     <h3 class="mb-5 text-center">SUBJECT ALLOCATION</h3>
 
-                                    <form>
+                                    <form method="post">
 
 
                                         <!-- Text input -->
@@ -53,7 +112,7 @@ if(isset($_SESSION['loggedin'])==false){
 
                                         <!-- Text input -->
                                         <div class="mb-4">
-                                            <select class="form-select" name="department">
+                                            <select class="form-select" name="department_main">
                                                 <option selected>Select Department</option>
                                                 <option value="CSE">CSE</option>
                                                 <option value="ECE">ECE</option>
@@ -82,7 +141,7 @@ if(isset($_SESSION['loggedin'])==false){
                                         <div class="form-outline mb-4">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <select class="form-select" id="department" name="department">
+                                                    <select class="form-select" id="department" name="department_faculty">
                                                         <option selected>Select Department</option>
                                                         <option value="CSE">CSE</option>
                                                         <option value="ECE">ECE</option>

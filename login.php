@@ -33,8 +33,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 }
  
 $admin_name = $password = "";
-$admin_name_err = $password_err = $login_err = $track_err = "";
- $track = "";
+$admin_name_err = $password_err = $login_err ="";
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     if(empty(trim($_POST["admin_name"]))){
