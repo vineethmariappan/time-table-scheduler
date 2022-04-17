@@ -5,22 +5,7 @@ require_once "config.php";
 <nav class="navbar navbar-light bg-secondary">
   <div class="container-fluid">
     <span class="navbar-brand mb-0 h1" style="color:white;">TIMETABLE ASSISTANT</span>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-    </div>
+  
     <div class=" my-2 my-lg-0 ml-auto">
       <?php
        

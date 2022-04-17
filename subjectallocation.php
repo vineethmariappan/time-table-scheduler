@@ -23,8 +23,9 @@ if(isset($_SESSION['loggedin'])==false){
     header("location: login.php");
     exit;
 }
-$academic_year_err = $department_main_err = $semester_err = $department_faculty_err = $faculty_code_err = "";
-$academic_year = $department_main = $semester = $department_faculty = $faculty_code = "";
+$academic_year_err =  $semester_err  = $faculty_code_err = "";
+$academic_year  = $semester = $faculty_code = "";
+$success = false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     if(empty(trim($_POST["academic_year"]))){
@@ -33,11 +34,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $academic_year = trim($_POST["academic_year"]);
     }
     
-    if(empty(trim($_POST["department_main"]))){
-        $department_main_err = "Please enter department.";
-    } else{
-        $department_main = trim($_POST["department_main"]);
-    }
 
     if(empty(trim($_POST["semester"]))){
         $semester_err = "Please enter semester.";
@@ -50,11 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $subject_code = trim($_POST["subject_code"]);
     }
 
-    if(empty(trim($_POST["department_faculty"]))){
-        $department_faculty_err = "Please enter department of faculty";
-    } else{
-        $department_faculty = trim($_POST["department_faculty"]);
-    }
+
 
     if(empty(trim($_POST["faculty_code"]))){
         $faculty_code_err = "Please enter faculty code";
@@ -63,20 +55,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Validate credentials
-    if(empty($academic_year_err) && empty($department_main_err) && empty($semester_err) && empty($department_faculty_err) && empty($faculty_code_err)){
-        $result = mysqli_query($con,"select subject_id from subject where subject_code='".$subject_code."' LIMIT 1");
+    if(empty($academic_year_err) && empty($semester_err) && empty($faculty_code_err)){
+        $result = mysqli_query($con,"select subject_id from subject where subject_code like '%".$subject_code."%' LIMIT 1");
         $row = mysqli_fetch_assoc($result);
         $subject_id = $row['subject_id'];
         $result = mysqli_query($con,"select faculty_id from faculty where faculty_code='".$faculty_code."' LIMIT 1");
         $row = mysqli_fetch_assoc($result);
         $faculty_id = $row['faculty_id'];
-        $result = mysqli_query($con,"select department_id from department where department_name='".$department_faculty."' LIMIT 1");
-        $row = mysqli_fetch_assoc($result);
-        $department_faculty_id = $row['department_id'];
-        $sql = "INSERT INTO subject_allocation(subject_id,faculty_id,semester,department_id,academic_year) values(?,?,?,?,?)";
-        $stmt = mysqli_prepare($con, $sql);
-        mysqli_stmt_bind_param($stmt, "sssss", $subject_id,$faculty_id,$semester,$department_faculty_id,$academic_year);
-        mysqli_stmt_execute($stmt);
+        $result = mysqli_query($con,"select subject_id from subject_allocation where subject_id=".$subject_id);
+        if(mysqli_num_rows($result)>0){
+            $subject_code_err = "The Subject has already been allocated to a faculty!";
+        }
+        else{
+            $sql = "INSERT INTO subject_allocation(subject_id,faculty_id,semester,academic_year) values(?,?,?,?)";
+            $stmt = mysqli_prepare($con, $sql);
+            mysqli_stmt_bind_param($stmt, "ssss", $subject_id,$faculty_id,$semester,$academic_year);
+            mysqli_stmt_execute($stmt);
+            $success = true;
+        }
+
     }
     
     // Close connection
@@ -98,7 +95,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             <div class="card" style="border-radius: 1rem;">
                                 <div class="card-body p-5">
                                     <h3 class="mb-5 text-center">SUBJECT ALLOCATION</h3>
-
+                                    <?php 
+                                    if(!empty($subject_code_err)){
+                                        echo '<div class="alert alert-danger">' . $subject_code_err . '</div>';
+                                    }        
+                                    else if($success){
+                                        echo '<div class="alert alert-success">Subject successfully allocated to the faculty</div>';
+                                    }
+                                    ?>
                                     <form method="post">
 
 
@@ -112,8 +116,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                                         <!-- Text input -->
                                         <div class="mb-4">
-                                            <select class="form-select" name="department_main">
-                                                <option selected>Select Department</option>
+                                            <select required class="form-select" name="department_main" id="department_main">
+                                                <option selected value="">Select Department</option>
                                                 <option value="CSE">CSE</option>
                                                 <option value="ECE">ECE</option>
                                                 <option value="MECH">MECH</option>
@@ -122,8 +126,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         </div>
 
                                         <div class="mb-4"> 
-                                            <select class="form-select" name="semester">
-                                                <option selected>Select Semester</option>
+                                            <select required class="form-select" name="semester">
+                                                <option selected value=''>Select Semester</option>
                                                 <option value="1">01</option>
                                                 <option value="2">02</option>
                                                 <option value="3">03</option>
@@ -135,25 +139,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                             </select>
                                         </div>
                                         <div class="form-outline mb-4">
-                                            <input required type="text" id="subject_code" class="form-control"  name="subject_code"/>
-                                            <label class="form-label" for="subject_code">Subject code</label>
+                                        <select required id="subject_code" class="form-select" name="subject_code">
+                                                <option selected value=''>Select Subject code</option>
+                                            </select>
+
                                         </div>
                                         <div class="form-outline mb-4">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <select class="form-select" id="department" name="department_faculty">
-                                                        <option selected>Select Department</option>
+                                                    <select required class="form-select" id="department" name="department_faculty">
+                                                        <option selected value=''>Select Department</option>
                                                         <option value="CSE">CSE</option>
                                                         <option value="ECE">ECE</option>
                                                         <option value="MECH">MECH</option>
                                                         <option value="GEO">GEO</option>
                                                     </select>
-                                                    <select id="faculty_code" class="form-select" name="faculty_code">
-                                                        <option selected>Select faculty code</option>
+                                                    <select required id="faculty_code" class="form-select" name="faculty_code">
+                                                        <option selected value=''>Select faculty code</option>
                                                     </select>
                                                     <div class="form-outline">
                                                         <input required type="text" id="faculty_name"
-                                                            class="form-control" name="faculty_name" placeholder="" disabled />
+                                                            class="form-control" name="faculty_name" disabled />
                                                     </div>
                                                 </div>
                                             </div>
