@@ -82,21 +82,19 @@ if(isset($_SESSION['loggedin'])==false){
                                         <div class="form-outline mb-4">
                                             <div class="form-group">
                                                 <div class="input-group">
-                                                    <select class="form-select" name="department">
+                                                    <select class="form-select" id="department" name="department">
                                                         <option selected>Select Department</option>
                                                         <option value="CSE">CSE</option>
                                                         <option value="ECE">ECE</option>
                                                         <option value="MECH">MECH</option>
                                                         <option value="GEO">GEO</option>
                                                     </select>
-                                                    <select class="form-select" name="department">
+                                                    <select id="faculty_code" class="form-select" name="faculty_code">
                                                         <option selected>Select faculty code</option>
-                                                        
                                                     </select>
                                                     <div class="form-outline">
-                                                        <input required type="text" id="form6Example3"
+                                                        <input required type="text" id="faculty_name"
                                                             class="form-control" name="faculty_name" placeholder="" disabled />
-                                                        <!-- <label class="form-label" for="form6Example3">Faculty name</label> -->
                                                     </div>
                                                 </div>
                                             </div>
@@ -117,7 +115,9 @@ if(isset($_SESSION['loggedin'])==false){
     </div>
 
     <!-- MDB -->
+    <script src="js/jquery.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
+    <script type="text/javascript" src="js/faculty.js"></script>
     <!-- Custom scripts -->
     <script type="text/javascript"></script>
 </body>
