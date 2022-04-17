@@ -16,7 +16,11 @@
     <link rel="stylesheet" href="css/tableassistant.css" />
 </head>
 <?php 
-include "navbar.php"
+include "navbar.php";
+if(isset($_SESSION['loggedin'])==false){
+    header("location: login.php");
+    exit;
+}
 ?>
 
 <body>
