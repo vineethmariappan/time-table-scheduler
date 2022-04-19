@@ -24,8 +24,8 @@ if(isset($_SESSION['loggedin'])==false){
 ?>
 
 <body>
-    <div class="mask d-flex align-items-center h-200">
         <div class="container-fluid">
+             <br> <br> <br>  
             <div class="row">
                 <div class="col-md-12 d-flex justify-content-center">
                     <table cellspacing="0" cellpadding="0" dir="ltr" border="1">

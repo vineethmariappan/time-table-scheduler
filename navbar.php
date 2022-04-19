@@ -3,16 +3,16 @@ session_start();
 require_once "config.php";
 ?>
 <nav class="navbar navbar-light bg-secondary">
-  <div class="container-fluid">
+  <div class="container">
     <span class="navbar-brand mb-0 h1" style="color:white;">TIMETABLE ASSISTANT</span>
   
-    <div class=" my-2 my-lg-0 ml-auto">
+    <div class="my-2 my-lg-0 ml-auto">
       <?php
        
       if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){ ?>
-      <button class="btn btn-outline-white" href="subjectallocation.php" style="outline:none;">Subject Allocation</button>
-      <button class="btn btn-outline-white" href="tableassistant.php" style="outline:none;">Timetable Assistant</button>
-      <button class="btn btn-outline-white" href="logout.php" style="outline:none;">Logout</button>
+      <a class="btn btn-outline-white" href="subjectallocation.php" style="outline:none;">Subject Allocation</a>
+      <a class="btn btn-outline-white" href="tableassistant.php" style="outline:none;">Timetable Assistant</a>
+      <a class="btn btn-outline-white" href="logout.php" style="outline:none;">Logout</a>
       <?php }
       else{
       ?>

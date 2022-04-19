@@ -82,15 +82,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 ?>
 
 <body>
-
-
-    <div class="col-md-5">
-
-        <div class="bg-image-vertical h-20" style="background-color: #EFD3E4;">
-            <div class="mask d-flex align-items-center h-200">
                 <div class="container">
+                    <br> <br> <br>  
                     <div class="row justify-content-center">
-                        <div class="col-md-5 col-md-5">
+                        <div class="col-md-5">
 
                             <div class="card" style="border-radius: 1rem;">
                                 <div class="card-body p-5">
@@ -170,10 +165,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                             class="btn btn-secondary btn-rounded btn-block">Allocate</button>
                                     </form>
 
-                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
